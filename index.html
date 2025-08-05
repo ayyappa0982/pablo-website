@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pablo the Labrador</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fffaf0;
+      color: #333;
+    }
+    header {
+      background-color: #ffda9e;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    .profile {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .profile img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ffda9e;
+    }
+    .favorites, .facts, .countdown {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .favorites ul, .facts ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+    .countdown p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #e67300;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🐶 Meet Pablo!</h1>
+    <p>A hyperactive Labrador born on August 24, 2021</p>
+  </header>
+
+  <div class="profile">
+    <img src="https://via.placeholder.com/250" alt="Pablo the Labrador" />
+    <div class="favorites">
+      <h2>🥣 Pablo's Favorites</h2>
+      <ul>
+        <li>Chicken</li>
+        <li>Yogurt</li>
+        <li>Running in circles</li>
+      </ul>
+    </div>
+
+    <div class="facts">
+      <h2>✨ Fun Facts</h2>
+      <ul>
+        <li>Loves attention</li>
+        <li>Always ready to play fetch</li>
+        <li>Can sniff chicken from a mile away</li>
+      </ul>
+    </div>
+
+    <div class="countdown">
+      <h2>🎉 Countdown to Pablo's Birthday</h2>
+      <p id="birthday-countdown">Loading...</p>
+    </div>
+  </div>
+
+  <script>
+    // Birthday Countdown
+    const birthday = new Date("August 24, 2025 00:00:00");
+    const countdownEl = document.getElementById("birthday-countdown");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = birthday - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "🎂 It's Pablo's Birthday Today!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s left!`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
